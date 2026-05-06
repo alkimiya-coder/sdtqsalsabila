@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PPDB - SDTQ Salsabila Rejang Lebong</title>
+    <link rel="icon" href="/pic/logo.ico" type="image/x-icon" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brandGreen: '#8AC441',
+              brandMaroon: '#801B33',
+              brandGold: '#F9C11C',
+              brandDark: '#212121',
+            },
+            fontFamily: {
+              sans: ['Plus Jakarta Sans', 'sans-serif'],
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
+
+      .web-background {
+        background: linear-gradient(
+            rgba(128, 27, 51, 0.8),
+            rgba(128, 27, 51, 0.8)
+          ),
+          url('/pic/upacara.png');
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: center;
+      }
+
+      @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
+
+      .web-background {
+        background: linear-gradient(
+            rgba(128, 27, 51, 0.8),
+            rgba(128, 27, 51, 0.8)
+          ),
+          url('/pic/upacara.png');
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: center;
+      }
+    </style>
+  </head>
+  <body class="font-sans web-background min-h-screen py-10 px-4">
+    <div
+      class="max-w-4xl mx-auto bg-white shadow-2xl rounded-[2rem] overflow-hidden"
+    >
+      <div class="p-8 md:p-10 border-b-4 border-brandGold">
+        <div
+          class="flex flex-col md:flex-row items-center text-center md:text-left gap-6"
+        >
+          <img src="/pic/logo.ico" alt="Logo" class="h-24 w-auto" />
+          <div>
+            <h1
+              class="text-xl md:text-2xl font-black text-brandMaroon uppercase tracking-tighter"
+            >
+              Sekolah Dasar Tahfidzul Qur'an
+            </h1>
+            <h2
+              class="text-3xl md:text-4xl font-black text-brandGreen uppercase leading-none mb-2"
+            >
+              Salsabila Rejang Lebong
+            </h2>
+            <p
+              class="text-[10px] md:text-xs text-gray-500 font-bold uppercase tracking-widest"
+            >
+              Jl. Ahmad Yani, Talang Ulu, Kec. Curup Timur, Kab. Rejang Lebong,
+              Bengkulu
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-8 md:p-12">
+        <header class="text-center mb-12">
+          <span
+            class="bg-brandGold/20 text-brandMaroon px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest"
+          >
+            Tahun Ajaran 2025/2026
+          </span>
+          <h3 class="text-2xl font-black text-brandDark mt-4 uppercase">
+            Formulir Pendataan Minat & Potensi
+          </h3>
+          <div class="w-20 h-1 bg-brandGreen mx-auto mt-4 rounded-full"></div>
+        </header>
+
+        <form id="spmbForm" class="space-y-10">
+          <section>
+            <div class="flex items-center gap-4 mb-6">
+              <span
+                class="bg-brandMaroon text-white w-8 h-8 rounded-full flex items-center justify-center font-bold"
+              >
+                1
+              </span>
+              <h4
+                class="text-lg font-black text-brandMaroon uppercase tracking-wide"
+              >
+                Data Calon Siswa
+              </h4>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="md:col-span-2">
+                <label
+                  class="block text-xs font-black text-gray-500 uppercase mb-2"
+                >
+                  Nama Lengkap
+                </label>
+                <input
+                  type="text"
+                  name="nama_lengkap"
+                  required
+                  class="w-full border-2 border-gray-100 rounded-xl p-3 focus:border-brandGreen outline-none transition"
+                />
+              </div>
+              <div>
+                <label
+                  class="block text-xs font-black text-gray-500 uppercase mb-2"
+                >
+                  Asal Sekolah (TK/RA)
+                </label>
+                <input
+                  type="text"
+                  name="asal_sekolah"
+                  required
+                  class="w-full border-2 border-gray-100 rounded-xl p-3 focus:border-brandGreen outline-none transition"
+                />
+              </div>
+
+              <div>
+                <label
+                  class="block text-xs font-black text-gray-500 uppercase mb-2"
+                >
+                  Anak Ke-
+                </label>
+                <input
+                  type="number"
+                  name="anak_ke"
+                  min="1"
+                  required
+                  class="w-full border-2 border-gray-100 rounded-xl p-3 focus:border-brandGreen outline-none transition"
+                  placeholder="Contoh: 1"
+                />
+              </div>
+
+              <div>
+                <label
+                  class="block text-xs font-black text-gray-500 uppercase mb-2"
+                >
+                  Tempat Lahir
+                </label>
+                <input
+                  type="text"
+                  name="tempat_lahir"
+                  required
+                  class="w-full border-2 border-gray-100 rounded-xl p-3 focus:border-brandGreen outline-none transition"
+                />
+              </div>
+              <div>
+                <label
+                  class="block text-xs font-black text-gray-500 uppercase mb-2"
+                >
+                  Tgl Lahir
+                </label>
+                <input
+                  type="date"
+                  name="tanggal_lahir"
+                  required
+                  class="w-full border-2 border-gray-100 rounded-xl p-3 focus:border-brandGreen outline-none transition"
+                />
+              </div>
+
+              <div class="md:col-span-2">
+                <label
+                  class="block text-xs font-black text-gray-500 uppercase mb-2"
+                >
+                  Alamat Lengkap
+                </label>
+                <textarea
+                  name="alamat"
+                  rows="2"
+                  required
+                  class="w-full border-2 border-gray-100 rounded-xl p-3 focus:border-brandGreen outline-none transition"
+                ></textarea>
+              </div>
+            </div>
+          </section>
+          <section>
+            <div class="flex items-center gap-4 mb-6">
+              <span
+                class="bg-brandMaroon text-white w-8 h-8 rounded-full flex items-center justify-center font-bold"
+              >
+                2
+              </span>
+              <h4
+                class="text-lg font-black text-brandMaroon uppercase tracking-wide"
+              >
+                Data Orang Tua / Wali
+              </h4>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="p-6 bg-gray-50 rounded-2xl">
+                <label
+                  class="block text-xs font-black text-brandMaroon uppercase mb-4 underline decoration-brandGold"
+                >
+                  Data Ayah
+                </label>
+                <input
+                  type="text"
+                  name="nama_ayah"
+                  placeholder="Nama Lengkap Ayah"
+                  required
+                  class="w-full border-2 border-white rounded-xl p-3 mb-4 focus:border-brandGreen outline-none transition"
+                />
+                <input
+                  type="text"
+                  name="pekerjaan_ayah"
+                  placeholder="Pekerjaan Ayah"
+                  required
+                  class="w-full border-2 border-white rounded-xl p-3 focus:border-brandGreen outline-none transition"
+                />
+              </div>
+              <div class="p-6 bg-gray-50 rounded-2xl">
+                <label
+                  class="block text-xs font-black text-brandMaroon uppercase mb-4 underline decoration-brandGold"
+                >
+                  Data Ibu
+                </label>
+                <input
+                  type="text"
+                  name="nama_ibu"
+                  placeholder="Nama Lengkap Ibu"
+                  required
+                  class="w-full border-2 border-white rounded-xl p-3 mb-4 focus:border-brandGreen outline-none transition"
+                />
+                <input
+                  type="text"
+                  name="pekerjaan_ibu"
+                  placeholder="Pekerjaan Ibu"
+                  required
+                  class="w-full border-2 border-white rounded-xl p-3 focus:border-brandGreen outline-none transition"
+                />
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <div class="flex items-center gap-4 mb-6">
+              <span
+                class="bg-brandMaroon text-white w-8 h-8 rounded-full flex items-center justify-center font-bold"
+              >
+                3
+              </span>
+              <h4
+                class="text-lg font-black text-brandMaroon uppercase tracking-wide"
+              >
+                Upload Dokumen
+              </h4>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+              <div
+                class="p-4 border-2 border-dashed border-gray-200 rounded-2xl hover:border-brandGreen transition"
+              >
+                <label
+                  class="text-[10px] font-black uppercase text-gray-400 block mb-2"
+                >
+                  Kartu Keluarga
+                </label>
+                <input
+                  type="file"
+                  name="upload_kk"
+                  accept="image/*,.pdf"
+                  required
+                  class="text-xs w-full"
+                />
+              </div>
+              <div
+                class="p-4 border-2 border-dashed border-gray-200 rounded-2xl hover:border-brandGreen transition"
+              >
+                <label
+                  class="text-[10px] font-black uppercase text-gray-400 block mb-2"
+                >
+                  Akte Kelahiran
+                </label>
+                <input
+                  type="file"
+                  name="upload_akte"
+                  accept="image/*,.pdf"
+                  required
+                  class="text-xs w-full"
+                />
+              </div>
+              <div
+                class="p-4 border-2 border-dashed border-gray-200 rounded-2xl hover:border-brandGreen transition"
+              >
+                <label
+                  class="text-[10px] font-black uppercase text-gray-400 block mb-2"
+                >
+                  Ijazah/SKL
+                </label>
+                <input
+                  type="file"
+                  name="upload_ijazah"
+                  accept="image/*,.pdf"
+                  required
+                  class="text-xs w-full"
+                />
+              </div>
+            </div>
+          </section>
+
+          <button
+            type="submit"
+            id="submitButton"
+            class="w-full py-4 bg-brandMaroon text-brandGold rounded-2xl font-black text-xl hover:bg-brandDark hover:scale-[1.02] transition-all shadow-xl uppercase tracking-widest"
+          >
+            Kirim Pendaftaran
+          </button>
+        </form>
+      </div>
+
+      <footer class="p-6 bg-gray-50 text-center">
+        <p
+          class="text-[10px] font-bold text-gray-400 uppercase tracking-widest"
+        >
+          &copy; 2025 SDTQ Salsabila Rejang Lebong
+        </p>
+      </footer>
+    </div>
+
+    <script>
+      const WEB_APP_URL =
+        'https://script.google.com/macros/s/AKfycbw6U4XmvPLlRVkWM9BtnDNjn6l2rv-c2mtAy6qB64bDfKeLazh6uW-a1Y5gJmoH6hIW/exec' // Masukkan URL hasil Deploy
+      const form = document.getElementById('spmbForm')
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault()
+
+        Swal.fire({
+          title: 'Sedang Mengirim...',
+          text: 'Mohon tunggu sebentar.',
+          allowOutsideClick: false,
+          didOpen: () => {
+            Swal.showLoading()
+          },
+        })
+
+        const formData = new FormData(form)
+        const data = {}
+
+        const toBase64 = (file) =>
+          new Promise((resolve, reject) => {
+            const reader = new FileReader()
+            if (!file || file.size === 0) {
+              resolve({ base64: null })
+              return
+            }
+            reader.readAsDataURL(file)
+            reader.onload = () =>
+              resolve({
+                base64: reader.result.split(',')[1],
+                type: file.type,
+                name: file.name,
+              })
+            reader.onerror = (error) => reject(error)
+          })
+
+        // Ambil data teks (termasuk anak_ke)
+        formData.forEach((value, key) => {
+          if (!(value instanceof File)) data[key] = value
+        })
+
+        try {
+          // Ambil data file
+          data.upload_kk = await toBase64(formData.get('upload_kk'))
+          data.upload_ijazah = await toBase64(formData.get('upload_ijazah'))
+          data.upload_akte = await toBase64(formData.get('upload_akte'))
+
+          // Gunakan fetch dengan method POST
+          // Jika masih JSON Error, kita gunakan trik 'no-cors'
+          await fetch(WEB_APP_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            body: JSON.stringify(data),
+          })
+
+          // Tampilkan sukses (karena no-cors tidak bisa baca response, kita asumsikan sukses jika fetch lewat)
+          Swal.fire({
+            icon: 'success',
+            title: 'Alhamdulillah!',
+            text:
+              'Data pendaftaran Ananda ' +
+              data.nama_lengkap +
+              ' berhasil dikirim.',
+            confirmButtonColor: '#801B33',
+          }).then(() => {
+            form.reset()
+            window.location.href = '/'
+          })
+        } catch (error) {
+          Swal.fire('Gagal', 'Terjadi kesalahan: ' + error.message, 'error')
+        }
+      })
+    </script>
+  </body>
+</html>

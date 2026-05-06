@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/pic/logo.ico" type="image/x-icon" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brandGreen: '#8AC441',
+              brandMaroon: '#801B33',
+              brandGold: '#F9C11C',
+              brandDark: '#212121',
+            },
+            fontFamily: {
+              sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+            },
+          },
+        },
+      }
+    </script>
+    <title>SDTQ Salsabila - Sekolah Tahfidz Quran</title>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
+      .back-to-top-visible {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: translateY(0) !important;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 text-brandDark antialiased font-sans">
+    <header class="relative">
+      <nav
+        class="bg-brandMaroon text-white py-4 shadow-xl sticky top-0 z-50 border-b-4 border-brandGold"
+      >
+        <div class="container mx-auto px-6 flex justify-between items-center">
+          <div class="flex items-center space-x-3">
+            <img
+              src="/pic/logo.ico"
+              alt="Logo"
+              class="h-12 w-auto object-contain"
+              onerror="this.style.display='none'"
+            />
+            <div class="flex flex-col leading-tight">
+              <span
+                class="text-xl font-black tracking-tighter uppercase leading-none"
+              >
+                SDTQ
+                <span class="text-brandGreen">SALSABILA</span>
+              </span>
+              <span
+                class="text-[10px] font-bold text-brandGold tracking-[0.2em] uppercase"
+              >
+                Rejang Lebong
+              </span>
+            </div>
+          </div>
+
+          <div
+            class="hidden md:flex space-x-8 font-bold text-xs uppercase tracking-widest"
+          >
+            <a href="#testimoni" class="hover:text-brandGold transition">
+              Testimoni
+            </a>
+            <a href="#program" class="hover:text-brandGold transition">
+              Program
+            </a>
+            <a href="#prestasi" class="hover:text-brandGold transition">
+              Prestasi
+            </a>
+          </div>
+
+          <a
+            id="btn-wa-nav"
+            href="#"
+            class="bg-brandGold text-brandMaroon px-6 py-2 rounded-full font-black text-xs hover:bg-white transition shadow-lg"
+          >
+            INFO SEKOLAH
+          </a>
+        </div>
+      </nav>
+
+      <section
+        class="bg-brandGreen relative overflow-hidden pt-16 md:pt-24 min-h-[600px] flex items-end"
+      >
+        <div
+          class="absolute top-10 right-10 w-64 h-64 border-[20px] border-white/10 rotate-45 pointer-events-none rounded-xl"
+        ></div>
+        <div
+          class="container mx-auto px-6 flex flex-col md:flex-row items-center relative z-10 w-full"
+        >
+          <div
+            class="md:w-1/2 text-center md:text-left text-white pb-16 md:pb-24"
+          >
+            <span
+              class="bg-brandMaroon text-brandGold px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest inline-block mb-6 shadow-lg"
+            >
+              Mencetak Generasi Hafidz & Beradab
+            </span>
+            <h1
+              class="text-5xl md:text-6xl font-black leading-[1.1] drop-shadow-xl"
+            >
+              Membangun Karakter
+              <br />
+              <span class="text-brandMaroon underline decoration-brandGold">
+                Berasaskan Al-Qur'an.
+              </span>
+            </h1>
+            <div
+              class="mt-10 flex flex-wrap gap-4 justify-center md:justify-start"
+            >
+              <a
+                href="/ppdb"
+                class="bg-brandMaroon text-brandGold px-8 py-4 rounded-xl font-black text-lg hover:scale-105 transition shadow-2xl"
+              >
+                Mulai Menghafal
+              </a>
+              <a
+                id="link-brosur"
+                href="#"
+                target="_blank"
+                class="bg-white text-brandMaroon px-8 py-4 rounded-xl font-black text-lg hover:bg-brandGold transition shadow-xl"
+              >
+                E-Brosur
+              </a>
+            </div>
+          </div>
+          <div
+            class="md:w-1/2 flex justify-center items-end relative h-full self-end"
+          >
+            <img
+              src="/pic/panahan.png"
+              alt="Siswa"
+              class="relative z-10 w-full max-w-md object-bottom"
+              style="
+                mask-image: linear-gradient(
+                  to bottom,
+                  black 70%,
+                  transparent 100%
+                );
+                -webkit-mask-image: linear-gradient(
+                  to bottom,
+                  black 70%,
+                  transparent 100%
+                );
+              "
+            />
+          </div>
+        </div>
+      </section>
+    </header>
+
+    <div class="container mx-auto px-6 py-20">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+        <main class="md:col-span-10 space-y-32">
+          <section id="mengapa">
+            <h2
+              class="text-3xl font-black text-brandMaroon mb-12 uppercase border-l-8 border-brandGold pl-6"
+            >
+              Mengapa SDTQ Salsabila?
+            </h2>
+            <div class="grid md:grid-cols-3 gap-10">
+              <div
+                class="p-8 bg-white rounded-3xl shadow-lg border-b-4 border-brandGreen"
+              >
+                <div class="text-4xl mb-4">💎</div>
+                <h3 class="font-black text-brandGreen mb-2">
+                  Adab di Atas Ilmu
+                </h3>
+                <p class="text-xs text-gray-500 leading-relaxed">
+                  Fokus utama pada pembentukan karakter islami dan etika santri
+                  dalam kehidupan sehari-hari.
+                </p>
+              </div>
+              <div
+                class="p-8 bg-white rounded-3xl shadow-lg border-b-4 border-brandGreen"
+              >
+                <div class="text-4xl mb-4">📖</div>
+                <h3 class="font-black text-brandGreen mb-2">Hafalan Terukur</h3>
+                <p class="text-xs text-gray-500 leading-relaxed">
+                  Metode tahfidz yang disesuaikan dengan kemampuan anak tanpa
+                  menghilangkan kegembiraan belajar.
+                </p>
+              </div>
+              <div
+                class="p-8 bg-white rounded-3xl shadow-lg border-b-4 border-brandGreen"
+              >
+                <div class="text-4xl mb-4">🏢</div>
+                <h3 class="font-black text-brandGreen mb-2">Lingkungan Aman</h3>
+                <p class="text-xs text-gray-500 leading-relaxed">
+                  Fasilitas yang representatif dan lingkungan yang mendukung
+                  proses belajar yang kondusif.
+                </p>
+              </div>
+            </div>
+          </section>
+          <section
+            id="program"
+            class="bg-brandMaroon rounded-[3rem] p-12 text-white shadow-2xl relative overflow-hidden"
+          >
+            <div
+              class="absolute right-0 bottom-0 w-64 h-64 bg-brandGold/5 rounded-full -mr-32 -mb-32"
+            ></div>
+
+            <h2 class="text-3xl font-black mb-12 uppercase">Program Utama</h2>
+
+            <div class="grid md:grid-cols-2 gap-6 relative z-10">
+              <div
+                class="flex items-center p-6 bg-white/10 rounded-2xl hover:bg-white/20 transition"
+              >
+                <span class="text-2xl mr-4">🕋</span>
+
+                <span class="font-bold text-sm">Halaqah Tahfidz Pagi</span>
+              </div>
+
+              <div
+                class="flex items-center p-6 bg-white/10 rounded-2xl hover:bg-white/20 transition"
+              >
+                <span class="text-2xl mr-4">📝</span>
+
+                <span class="font-bold text-sm">Tahsin Metode Tilawati</span>
+              </div>
+
+              <div
+                class="flex items-center p-6 bg-white/10 rounded-2xl hover:bg-white/20 transition"
+              >
+                <span class="text-2xl mr-4">🏹</span>
+
+                <span class="font-bold text-sm">Ekstrakurikuler Sunnah</span>
+              </div>
+
+              <div
+                class="flex items-center p-6 bg-white/10 rounded-2xl hover:bg-white/20 transition"
+              >
+                <span class="text-2xl mr-4">🌍</span>
+
+                <span class="font-bold text-sm">Bahasa Arab & Inggris</span>
+              </div>
+            </div>
+          </section>
+
+          <section id="prestasi">
+            <h2 class="text-3xl font-black text-brandMaroon mb-8 uppercase">
+              Prestasi Terkini
+            </h2>
+            <div id="prestasi-list" class="space-y-4">
+              <p class="text-gray-400 italic text-sm">Memuat prestasi...</p>
+            </div>
+          </section>
+
+          <section id="testimoni" class="bg-brandGreen/10 rounded-[3rem] p-12">
+            <h2
+              class="text-2xl font-black text-brandMaroon mb-8 uppercase tracking-widest"
+            >
+              Suara Wali Murid
+            </h2>
+            <div id="testimoni-list" class="space-y-12">
+              <p class="text-gray-400 italic">Memuat testimoni...</p>
+            </div>
+          </section>
+          <section class="pt-10 text-center">
+            <p
+              class="text-[9px] font-black text-gray-400 uppercase tracking-[0.5em] mb-8"
+            >
+              Didukung Oleh
+            </p>
+            <div
+              class="flex flex-wrap justify-center items-center gap-12 opacity-50 grayscale hover:grayscale-0 transition-all"
+            >
+              <span class="text-lg font-black text-brandMaroon italic">
+                <a href="https://disdikbud.rejanglebongkab.go.id/">
+                  DINAS PENDIDIKAN
+                </a>
+              </span>
+              <span
+                class="text-lg font-black text-brandMaroon italic tracking-tighter"
+              >
+                <a href="https://www.instagram.com/curupmengaji/">
+                  CURUP
+                  <span class="text-brandGreen uppercase">Mengaji</span>
+                </a>
+              </span>
+            </div>
+          </section>
+        </main>
+
+        <aside class="md:col-span-2">
+          <div class="sticky top-28 space-y-6">
+            <div
+              class="bg-white rounded-3xl shadow-xl border-t-4 border-brandMaroon p-6 relative overflow-hidden"
+            >
+              <div class="flex items-center justify-between mb-8">
+                <h3
+                  class="font-black text-[9px] uppercase text-brandMaroon italic tracking-widest"
+                >
+                  Kabar Terbaru
+                </h3>
+                <span
+                  class="w-2 h-2 bg-brandGreen rounded-full animate-ping"
+                ></span>
+              </div>
+              <div id="berita-sidebar" class="space-y-8"></div>
+              <a
+                href="https://instagram.com/sdtqsalsabila"
+                target="_blank"
+                class="block text-center w-full mt-10 py-3 bg-brandMaroon text-brandGold text-[9px] font-black rounded-xl uppercase hover:bg-brandDark transition tracking-widest"
+              >
+                Follow Kami
+              </a>
+            </div>
+            <div class="bg-brandGold rounded-3xl p-5 text-brandMaroon">
+              <p class="text-[9px] font-black uppercase tracking-tighter mb-2">
+                Butuh Bantuan?
+              </p>
+
+              <p class="text-[11px] font-bold leading-tight">
+                Hubungi Layanan Konsultasi Orang Tua.
+              </p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <footer
+      class="bg-brandMaroon text-white pt-24 pb-12 rounded-t-[5rem] border-t-4 border-brandGold"
+    >
+      <div class="container mx-auto px-6">
+        <div
+          class="bg-brandGold rounded-[3rem] p-10 md:p-14 mb-20 flex flex-col md:flex-row items-center justify-between shadow-2xl transform -translate-y-12"
+        >
+          <div class="text-center md:text-left mb-6 md:mb-0">
+            <h2
+              class="text-3xl font-black text-brandMaroon italic uppercase leading-none"
+            >
+              Silaturahmi Bersama Kami.
+            </h2>
+
+            <p class="mt-2 text-brandMaroon font-bold text-sm">
+              Konsultasi pendidikan putra-putri Anda melalui Admin kami.
+            </p>
+          </div>
+
+          <button
+            class="bg-brandMaroon text-brandGold px-10 py-4 rounded-2xl font-black text-lg hover:scale-105 transition shadow-xl"
+          >
+            <a id="btn-wa-humas">HUBUNGI ADMIN</a>
+          </button>
+        </div>
+
+        <div
+          class="grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-white/10 pb-16"
+        >
+          <div class="space-y-4">
+            <div class="text-xl font-black italic tracking-tighter uppercase">
+              SDTQ
+
+              <span class="text-brandGreen">SALSABILA</span>
+            </div>
+
+            <p class="text-[10px] text-gray-400 font-bold tracking-widest">
+              REJANG LEBONG, BENGKULU
+            </p>
+          </div>
+
+          <div>
+            <h4 class="text-brandGold font-black uppercase text-[10px] mb-4">
+              Navigasi
+            </h4>
+
+            <ul class="space-y-2 text-[11px] font-bold text-gray-300">
+              <li>
+                <a href="#testimoni" class="hover:text-brandGreen">Testimoni</a>
+              </li>
+
+              <li>
+                <a href="#program" class="hover:text-brandGreen">
+                  Program Unggulan
+                </a>
+              </li>
+
+              <li>
+                <a href="#prestasi" class="hover:text-brandGreen">
+                  Prestasi Siswa
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-brandGold font-black uppercase text-[10px] mb-4">
+              Dukungan
+            </h4>
+
+            <p class="text-[11px] text-gray-300 font-bold uppercase">
+              Dinas Pendidikan
+            </p>
+
+            <p class="text-[11px] text-gray-300 font-bold uppercase mt-1">
+              Curup Mengaji
+            </p>
+          </div>
+
+          <div class="flex space-x-4 text-[10px] font-black italic">
+            <span class="cursor-pointer hover:text-brandGold">IG</span>
+
+            <span class="cursor-pointer hover:text-brandGold">YT</span>
+
+            <span class="cursor-pointer hover:text-brandGold">FB</span>
+          </div>
+        </div>
+
+        <div
+          class="mt-10 text-center text-[9px] font-bold text-white/20 uppercase tracking-[0.5em]"
+        >
+          &copy; 2025 SDTQ SALSABILA. GENERASI QURANI, CERDAS, BERADAB.
+        </div>
+      </div>
+    </footer>
+
+    <button
+      id="backToTop"
+      onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+      class="fixed bottom-8 right-8 z-[100] bg-brandMaroon text-brandGold w-14 h-14 rounded-2xl shadow-2xl border-2 border-brandGold flex items-center justify-center transition-all duration-500 opacity-0 invisible translate-y-10 hover:bg-brandGold hover:text-brandMaroon hover:scale-110 group"
+      title="Kembali ke Atas"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6 transform group-hover:-translate-y-1 transition-transform"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="3"
+          d="M5 10l7-7m0 0l7 7m-7-7v18"
+        />
+      </svg>
+    </button>
+    <script>
+      async function loadWebsiteContent() {
+        try {
+          const response = await fetch('/api/content')
+          const result = await response.json()
+
+          if (result.status === 'SUCCESS') {
+            // Mengambil data dari result.data
+            const { settings, achievements, testimoni, berita } = result.data
+
+            // 1. SETTINGS (WA & BROSUR)
+            const wa = settings.find((i) => i.key === 'wa_admin')?.value
+            const brosur = settings.find((i) => i.key === 'link_brosur')?.value
+
+            if (wa) {
+              // Update tombol di Navigasi
+              if (document.getElementById('btn-wa-nav')) {
+                document.getElementById(
+                  'btn-wa-nav',
+                ).href = `https://wa.me/${wa}`
+              }
+              // Update tombol di Footer (ID disesuaikan dengan HTML Anda: btn-wa-humas)
+              if (document.getElementById('btn-wa-humas')) {
+                document.getElementById(
+                  'btn-wa-humas',
+                ).href = `https://wa.me/${wa}`
+              }
+            }
+            if (brosur && document.getElementById('link-brosur')) {
+              document.getElementById('link-brosur').href = brosur
+            }
+
+            // 2. RENDER TESTIMONI
+            const testiList = document.getElementById('testimoni-list')
+            if (testimoni && testimoni.length > 0) {
+              testiList.innerHTML = testimoni
+                .map(
+                  (t) => `
+              <div class="max-w-2xl border-l-4 border-brandGold pl-6 mb-10">
+                <p class="text-xl font-bold italic text-brandDark">
+                  "${t.kesan}"
+                </p>
+                <p class="mt-4 font-black text-brandMaroon uppercase text-xs tracking-widest">
+                  — ${t.nama}
+                </p>
+              </div>
+            `,
+                )
+                .join('')
+            } else {
+              testiList.innerHTML =
+                '<p class="text-gray-500 italic">Belum ada testimoni.</p>'
+            }
+
+            // 3. RENDER PRESTASI
+            const prestasiList = document.getElementById('prestasi-list')
+            if (achievements && achievements.length > 0) {
+              prestasiList.innerHTML = achievements
+                .map(
+                  (i) => `
+              <div class="p-6 bg-white shadow-md rounded-2xl flex justify-between items-center border-r-8 border-brandGold">
+                <div>
+                  <h4 class="font-black text-brandMaroon italic text-sm">${
+                    i.peringkat
+                  } ${i.mata_lomba}</h4>
+                  <p class="text-[10px] text-brandGreen font-bold uppercase mt-1">${
+                    i.tingkat
+                  }</p>
+                </div>
+                <span class="text-2xl">${i.emoji || '🏆'}</span>
+              </div>
+            `,
+                )
+                .join('')
+            }
+
+            // 4. RENDER BERITA (SIDEBAR)
+            const beritaSidebar = document.getElementById('berita-sidebar')
+            if (berita && berita.length > 0) {
+              beritaSidebar.innerHTML = berita
+                .slice(0, 5)
+                .map(
+                  (b) => `
+              <div class="group cursor-pointer border-b border-gray-50 pb-4 last:border-0">
+                <p class="text-[8px] font-black ${
+                  b.kategori === 'Instagram'
+                    ? 'text-brandGreen'
+                    : 'text-brandGold'
+                } uppercase mb-1">
+                  ${b.kategori}
+                </p>
+                <a href="${
+                  b.link || '#'
+                }" target="_blank" class="text-[11px] font-bold text-brandDark group-hover:text-brandMaroon transition leading-snug block">
+                  ${b.judul}
+                </a>
+              </div>
+            `,
+                )
+                .join('')
+            }
+          }
+        } catch (error) {
+          console.error('Gagal memuat konten:', error)
+          // Tampilkan pesan error jika perlu
+          document.getElementById('testimoni-list').innerHTML =
+            '<p class="text-red-500">Gagal memuat data.</p>'
+        }
+      }
+
+      // Back to Top Logic
+      const backToTopButton = document.getElementById('backToTop')
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 400)
+          backToTopButton.classList.add('back-to-top-visible')
+        else backToTopButton.classList.remove('back-to-top-visible')
+      })
+
+      window.onload = loadWebsiteContent
+    </script>
+  </body>
+</html>

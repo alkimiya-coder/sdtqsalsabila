@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brandGreen: '#8AC441',
+              brandMaroon: '#801B33',
+              brandGold: '#F9C11C',
+              brandDark: '#212121',
+            },
+            fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] },
+          },
+        },
+      }
+    </script>
+    <title>Admin Dashboard - SDTQ Salsabila</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
+      .tab-content {
+        display: none;
+      }
+      .tab-content.active {
+        display: block;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 font-sans antialiased">
+    <div
+      id="modal-prestasi"
+      class="fixed inset-0 bg-brandDark/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4"
+    >
+      <div class="bg-white w-full max-w-md rounded-[2.5rem] p-8 shadow-2xl">
+        <h3 class="font-black text-brandMaroon uppercase italic mb-6">
+          Tambah Prestasi Siswa
+        </h3>
+        <div class="space-y-4">
+          <input
+            id="pres-peringkat"
+            type="text"
+            placeholder="Peringkat (Juara 1 / Harapan 2)"
+            class="w-full p-4 bg-gray-50 border rounded-2xl font-bold text-sm"
+          />
+          <input
+            id="pres-lomba"
+            type="text"
+            placeholder="Nama Lomba"
+            class="w-full p-4 bg-gray-50 border rounded-2xl font-bold text-sm"
+          />
+          <input
+            id="pres-tingkat"
+            type="text"
+            placeholder="Tingkat (Provinsi/Nasional)"
+            class="w-full p-4 bg-gray-50 border rounded-2xl font-bold text-sm"
+          />
+          <select
+            id="pres-emoji"
+            class="w-full p-4 bg-gray-50 border rounded-2xl font-bold text-sm"
+          >
+            <option value="🏆">Piala (🏆)</option>
+            <option value="🥇">Emas (🥇)</option>
+            <option value="🥈">Perak (🥈)</option>
+            <option value="🥉">Perunggu (🥉)</option>
+            <option value="🏅">Medali (🏅)</option>
+          </select>
+          <button
+            onclick="submitAchievement()"
+            class="w-full py-4 bg-brandGreen text-white rounded-2xl font-black uppercase tracking-widest hover:bg-opacity-90"
+          >
+            Simpan Prestasi
+          </button>
+          <button
+            onclick="closeModal('modal-prestasi')"
+            class="w-full text-gray-400 font-bold text-xs uppercase"
+          >
+            Batal
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="modal-berita"
+      class="fixed inset-0 bg-brandDark/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4"
+    >
+      <div class="bg-white w-full max-w-md rounded-[2.5rem] p-8 shadow-2xl">
+        <h3 class="font-black text-brandMaroon uppercase italic mb-6">
+          Tambah Kabar Terbaru
+        </h3>
+        <div class="space-y-4">
+          <input
+            id="news-judul"
+            type="text"
+            placeholder="Judul Berita"
+            class="w-full p-4 bg-gray-50 border rounded-2xl font-bold text-sm"
+          />
+          <select
+            id="news-kategori"
+            class="w-full p-4 bg-gray-50 border rounded-2xl font-bold text-sm"
+          >
+            <option value="Update">Update</option>
+            <option value="Instagram">Instagram</option>
+            <option value="Info">Info</option>
+          </select>
+          <input
+            id="news-link"
+            type="url"
+            placeholder="Link Sosmed (Optional)"
+            class="w-full p-4 bg-gray-50 border rounded-2xl font-bold text-sm"
+          />
+          <button
+            onclick="submitBerita()"
+            class="w-full py-4 bg-brandGreen text-white rounded-2xl font-black uppercase tracking-widest hover:bg-opacity-90"
+          >
+            Simpan Berita
+          </button>
+          <button
+            onclick="closeModal('modal-berita')"
+            class="w-full text-gray-400 font-bold text-xs uppercase"
+          >
+            Batal
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex min-h-screen">
+      <aside class="w-64 bg-brandMaroon text-white flex flex-col">
+        <div class="p-6 text-center border-b border-white/10">
+          <h1 class="font-black text-xl italic tracking-tighter">
+            SDTQ
+            <span class="text-brandGreen">ADMIN</span>
+          </h1>
+        </div>
+        <nav class="flex-1 p-4 space-y-2">
+          <button
+            onclick="showTab('info')"
+            class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-white/10 transition font-bold text-sm"
+          >
+            <span>⚙️</span>
+            <span>Info Sekolah</span>
+          </button>
+          <button
+            onclick="showTab('berita')"
+            class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-white/10 transition font-bold text-sm"
+          >
+            <span>📰</span>
+            <span>Kabar Terbaru</span>
+          </button>
+          <button
+            onclick="showTab('prestasi')"
+            class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-white/10 transition font-bold text-sm"
+          >
+            <span>🏆</span>
+            <span>Prestasi</span>
+          </button>
+          <button
+            onclick="showTab('testimoni')"
+            class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-white/10 transition font-bold text-sm"
+          >
+            <span>💬</span>
+            <span>Testimoni</span>
+          </button>
+        </nav>
+        <div class="p-6">
+          <a
+            href="/"
+            class="block text-center text-[10px] font-black uppercase text-brandGold hover:underline"
+          >
+            Lihat Landing Page
+          </a>
+        </div>
+      </aside>
+
+      <main class="flex-1 flex flex-col">
+        <header class="bg-white border-b p-6 flex justify-between items-center">
+          <h2
+            id="tab-title"
+            class="text-xl font-black text-brandMaroon uppercase italic"
+          >
+            Info Sekolah
+          </h2>
+          <a
+            href="/logout"
+            class="text-xs font-bold text-red-600 hover:text-red-800 transition"
+          >
+            Logout
+          </a>
+        </header>
+
+        <div class="p-8">
+          <div id="info" class="tab-content active space-y-6">
+            <div class="bg-white p-8 rounded-[2rem] shadow-sm max-w-lg">
+              <h3
+                class="font-black text-brandMaroon mb-6 uppercase text-sm italic"
+              >
+                Konfigurasi Utama
+              </h3>
+              <div class="space-y-4">
+                <input
+                  id="input-wa"
+                  type="text"
+                  placeholder="WhatsApp Admin"
+                  class="w-full p-3 bg-gray-50 border rounded-xl font-bold"
+                />
+                <input
+                  id="input-brosur"
+                  type="text"
+                  placeholder="Link E-Brosur"
+                  class="w-full p-3 bg-gray-50 border rounded-xl font-bold"
+                />
+                <button
+                  onclick="saveAllSettings()"
+                  class="w-full py-4 bg-brandMaroon text-brandGold rounded-2xl font-black uppercase tracking-widest shadow-lg transition active:scale-95"
+                >
+                  Simpan Semua
+                </button>
+              </div>
+            </div>
+            <div
+              class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100"
+            >
+              <div
+                class="flex flex-col md:flex-row md:items-center justify-between gap-4"
+              >
+                <div>
+                  <h3 class="text-lg font-black text-brandMaroon uppercase">
+                    Database PPDB
+                  </h3>
+                  <p class="text-sm text-gray-500">
+                    Download data pendaftar format CSV.
+                  </p>
+                </div>
+                <a
+                  href="/api/content?target=download_ppdb"
+                  class="bg-brandMaroon text-white px-6 py-3 rounded-xl font-bold inline-flex items-center gap-2 hover:bg-opacity-90"
+                >
+                  <span>📥</span>
+                  Download CSV
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div id="berita" class="tab-content">
+            <div class="bg-white rounded-[2rem] shadow-sm overflow-hidden">
+              <div class="p-6 flex justify-between items-center bg-gray-50/50">
+                <h3
+                  class="font-black text-brandMaroon uppercase text-sm italic"
+                >
+                  Manajemen Berita
+                </h3>
+                <button
+                  onclick="openModal('modal-berita')"
+                  class="bg-brandGreen text-white px-4 py-2 rounded-xl font-bold text-xs uppercase"
+                >
+                  + Tambah
+                </button>
+              </div>
+              <table class="w-full text-left">
+                <thead
+                  class="bg-gray-100 text-[10px] uppercase font-black text-gray-400"
+                >
+                  <tr>
+                    <th class="p-6">Judul</th>
+                    <th class="p-6">Kat</th>
+                    <th class="p-6">Link</th>
+                    <th class="p-6">Aksi</th>
+                  </tr>
+                </thead>
+                <tbody id="news-table-body" class="text-sm font-bold"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div id="prestasi" class="tab-content">
+            <div class="bg-white rounded-[2rem] shadow-sm overflow-hidden">
+              <div class="p-6 flex justify-between items-center bg-gray-50/50">
+                <h3
+                  class="font-black text-brandMaroon uppercase text-sm italic"
+                >
+                  Prestasi Siswa
+                </h3>
+                <button
+                  onclick="openModal('modal-prestasi')"
+                  class="bg-brandGold text-brandMaroon px-4 py-2 rounded-xl font-bold text-xs uppercase"
+                >
+                  + Tambah
+                </button>
+              </div>
+              <table class="w-full text-left">
+                <thead
+                  class="bg-gray-100 text-[10px] uppercase font-black text-gray-400"
+                >
+                  <tr>
+                    <th class="p-6">Icon</th>
+                    <th class="p-6">Peringkat</th>
+                    <th class="p-6">Mata Lomba</th>
+                    <th class="p-6">Tingkat</th>
+                    <th class="p-6 text-center">Aksi</th>
+                  </tr>
+                </thead>
+                <tbody
+                  id="achieve-table-body"
+                  class="text-sm font-bold"
+                ></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div id="testimoni" class="tab-content">
+            <div
+              class="bg-white rounded-[2rem] shadow-sm overflow-hidden border border-brandGold/30"
+            >
+              <div class="p-6 bg-brandGold/5">
+                <h3
+                  class="font-black text-brandMaroon uppercase text-sm italic"
+                >
+                  Approval Testimoni
+                </h3>
+              </div>
+              <table class="w-full text-left">
+                <thead
+                  class="bg-gray-100 text-[10px] uppercase font-black text-gray-400"
+                >
+                  <tr>
+                    <th class="p-6">Nama</th>
+                    <th class="p-6">Pesan & Kesan</th>
+                    <th class="p-6">Status</th>
+                    <th class="p-6 text-center">Aksi</th>
+                  </tr>
+                </thead>
+                <tbody id="testi-table-body" class="text-sm font-bold"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      function showTab(tabId) {
+        document
+          .querySelectorAll('.tab-content')
+          .forEach((t) => t.classList.remove('active'))
+        document.getElementById(tabId).classList.add('active')
+        const titles = {
+          info: 'Info Sekolah',
+          berita: 'Kabar Terbaru',
+          prestasi: 'Prestasi Siswa',
+          testimoni: 'Suara Wali Murid',
+        }
+        document.getElementById('tab-title').innerText = titles[tabId]
+      }
+
+      function openModal(id) {
+        document.getElementById(id).classList.remove('hidden')
+      }
+      function closeModal(id) {
+        document.getElementById(id).classList.add('hidden')
+      }
+
+      // --- FETCH & RENDER DATA ---
+      async function loadAllData() {
+        try {
+          const response = await fetch('/api/content?mode=admin')
+          const result = await response.json()
+          if (result.status === 'SUCCESS') {
+            const { settings, berita, achievements, testimoni } = result.data
+
+            // Info Sekolah
+            const wa = settings.find((i) => i.key === 'wa_admin')
+            if (wa) document.getElementById('input-wa').value = wa.value
+            const br = settings.find((i) => i.key === 'link_brosur')
+            if (br) document.getElementById('input-brosur').value = br.value
+
+            renderNews(berita)
+            renderAchievements(achievements)
+            renderTestimonials(testimoni)
+          }
+        } catch (err) {
+          console.error(err)
+        }
+      }
+
+      function renderNews(data) {
+        const body = document.getElementById('news-table-body')
+        body.innerHTML = data
+          .map(
+            (i) => `
+          <tr class="border-b">
+            <td class="p-6">${i.judul}</td>
+            <td class="p-6 uppercase text-[10px] text-brandGreen">${
+              i.kategori
+            }</td>
+            <td class="p-6">${
+              i.link ? `<a href="${i.link}" target="_blank">🔗</a>` : '-'
+            }</td>
+            <td class="p-6 text-red-500 cursor-pointer" onclick="hapusBerita('${
+              i.judul
+            }')">🗑️</td>
+          </tr>`,
+          )
+          .join('')
+      }
+
+      function renderAchievements(data) {
+        const body = document.getElementById('achieve-table-body')
+        body.innerHTML = data
+          .map(
+            (i) => `
+          <tr class="border-b">
+            <td class="p-6 text-2xl">${i.emoji || '🏆'}</td>
+            <td class="p-6 text-brandMaroon">${i.peringkat}</td>
+            <td class="p-6">${i.mata_lomba}</td>
+            <td class="p-6 uppercase text-[10px] text-gray-400 font-black">${
+              i.tingkat
+            }</td>
+            <td class="p-6 text-center text-red-500 cursor-pointer" onclick="hapusAchievement('${
+              i.mata_lomba
+            }')">🗑️</td>
+          </tr>`,
+          )
+          .join('')
+      }
+
+      function renderTestimonials(data) {
+        const body = document.getElementById('testi-table-body')
+        body.innerHTML = data
+          .map((i) => {
+            const cleanSaran = i.saran
+              ? i.saran.replace(/'/g, "\\'").replace(/\n/g, ' ')
+              : ''
+            const cleanNama = i.nama ? i.nama.replace(/'/g, "\\'") : ''
+            const cleanKesan = i.kesan
+              ? i.kesan.replace(/'/g, "\\'").replace(/\n/g, ' ')
+              : ''
+            return `
+          <tr class="border-b">
+            <td class="p-6">${i.nama}</td>
+            <td class="p-6">
+                <div class="text-xs text-gray-600 italic">"${i.saran}"</div>
+                <div class="text-[10px] text-brandGreen mt-1 font-black uppercase">Kesan: ${
+                  i.kesan || '-'
+                }</div>
+            </td>
+            <td class="p-6">
+              <span class="px-2 py-1 rounded-lg text-[10px] uppercase font-black ${
+                i.status === 'AKTIF'
+                  ? 'bg-green-100 text-green-600'
+                  : 'bg-orange-100 text-orange-600'
+              }">${i.status || 'NONAKTIF'}</span>
+            </td>
+            <td class="p-6 text-center space-x-2">
+              <button onclick="toggleTesti('${cleanNama}', '${cleanSaran}', '${cleanKesan}', 'AKTIF')" class="text-green-600 text-[10px] font-black uppercase hover:underline">Approve</button>
+              <button onclick="toggleTesti('${cleanNama}', '${cleanSaran}', '${cleanKesan}', 'NONAKTIF')" class="text-orange-600 text-[10px] font-black uppercase hover:underline">Hide</button>
+              <button onclick="deleteTesti('${cleanNama}', '${cleanSaran}', '${cleanKesan}')" class="text-red-500 ml-2">🗑️</button>
+            </td>
+          </tr>`
+          })
+          .join('')
+      }
+
+      // --- ACTIONS ---
+      async function submitBerita() {
+        const payload = {
+          type: 'ADD_BERITA',
+          judul: document.getElementById('news-judul').value,
+          kategori: document.getElementById('news-kategori').value,
+          link: document.getElementById('news-link').value,
+        }
+        const res = await updateAPI(payload)
+        if (res.status === 'SUCCESS') {
+          closeModal('modal-berita')
+          loadAllData()
+        }
+      }
+
+      async function hapusBerita(judul) {
+        if (confirm('Hapus berita ini?')) {
+          await updateAPI({ type: 'DELETE_BERITA', judul: judul })
+          loadAllData()
+        }
+      }
+
+      async function submitAchievement() {
+        const payload = {
+          type: 'ADD_ACHIEVEMENT',
+          peringkat: document.getElementById('pres-peringkat').value,
+          mata_lomba: document.getElementById('pres-lomba').value,
+          tingkat: document.getElementById('pres-tingkat').value,
+          emoji: document.getElementById('pres-emoji').value,
+        }
+        const res = await updateAPI(payload)
+        if (res.status === 'SUCCESS') {
+          closeModal('modal-prestasi')
+          loadAllData()
+        }
+      }
+
+      async function hapusAchievement(mataLomba) {
+        // Anda perlu menambahkan logika DELETE_ACHIEVEMENT di GAS jika ingin ini jalan
+        alert('Fitur hapus prestasi sedang disiapkan di GAS')
+      }
+
+      async function toggleTesti(nama, saran, kesan, targetStatus) {
+        Swal.fire({ title: 'Memproses...', didOpen: () => Swal.showLoading() })
+        const res = await updateAPI({
+          type: 'TOGGLE_TESTIMONY',
+          nama,
+          saran,
+          kesan,
+          newStatus: targetStatus,
+        })
+        if (res.status === 'SUCCESS') {
+          Swal.fire('Berhasil!', '', 'success')
+          loadAllData()
+        }
+      }
+
+      async function deleteTesti(nama, saran, kesan) {
+        const confirm = await Swal.fire({
+          title: 'Hapus?',
+          text: `Hapus testimoni dari ${nama}?`,
+          icon: 'warning',
+          showCancelButton: true,
+        })
+        if (confirm.isConfirmed) {
+          const res = await updateAPI({
+            type: 'DELETE_TESTIMONY',
+            nama,
+            saran,
+            kesan,
+          })
+          if (res.status === 'SUCCESS') {
+            Swal.fire('Terhapus!', '', 'success')
+            loadAllData()
+          }
+        }
+      }
+
+      async function saveAllSettings() {
+        const wa = document.getElementById('input-wa').value
+        const br = document.getElementById('input-brosur').value
+        await updateAPI({ type: 'UPDATE_SETTINGS', key: 'wa_admin', value: wa })
+        await updateAPI({
+          type: 'UPDATE_SETTINGS',
+          key: 'link_brosur',
+          value: br,
+        })
+        Swal.fire('Tersimpan!', '', 'success')
+      }
+
+      // async function updateAPI(payload) {
+      //   const res = await fetch('/api/update-settings', {
+      //     method: 'POST',
+      //     headers: { 'Content-Type': 'application/json' },
+      //     body: JSON.stringify(payload),
+      //   })
+      //   return res.json()
+      // }
+
+      async function updateAPI(payload) {
+        try {
+          const res = await fetch('/api/update-settings', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          })
+          const result = await res.json()
+          console.log('Response dari Server:', result) // Tambahkan ini
+          return result
+        } catch (err) {
+          console.error('Fetch Error:', err)
+          return { status: 'ERROR', message: err.toString() }
+        }
+      }
+
+      window.onload = loadAllData
+    </script>
+  </body>
+</html>
